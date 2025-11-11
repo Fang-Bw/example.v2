@@ -10,13 +10,16 @@ type Talk interface {
 
 // Chatbot 定义了聊天机器人的接口类型。
 type Chatbot interface {
+	// 推荐将嵌入式结构体放在首行
+	Talk
+
 	Name() string
 	Begin() (string, error)
-	Talk
 	ReportError(err error) string
 	End() error
 }
 
+// 顶层变量使用var声明
 var (
 	// ErrInvalidChatbotName 代表无效的聊天机器人名称的错误。
 	ErrInvalidChatbotName = errors.New("Invalid chatbot name")
