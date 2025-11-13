@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	dataChan := make(chan int, 5)
@@ -8,12 +10,9 @@ func main() {
 	syncChan2 := make(chan struct{}, 2)
 	go func() { // 用于演示接收操作。
 		<-syncChan1
-		for {
-			if elem, ok := <-dataChan; ok {
-				fmt.Printf("Received: %d [receiver]\n", elem)
-			} else {
-				break
-			}
+		// 使用range操作更优雅
+		for elem := range dataChan {
+			fmt.Printf("Received: %d [receiver]\n", elem)
 		}
 		fmt.Println("Done. [receiver]")
 		syncChan2 <- struct{}{}

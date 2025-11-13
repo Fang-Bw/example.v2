@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	// 只有lock mutex 的 routine unlock mutex，其他routine才能lock成功
 	var mutex sync.Mutex
 	fmt.Println("Lock the lock. (main)")
 	mutex.Lock()

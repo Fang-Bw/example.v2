@@ -15,6 +15,7 @@ func main() {
 	newFunc := func() interface{} {
 		return atomic.AddInt32(&count, 1)
 	}
+	// sync.Pool用于缓存临时对象，gc后可能会被回收
 	pool := sync.Pool{New: newFunc}
 
 	// New 字段值的作用。
