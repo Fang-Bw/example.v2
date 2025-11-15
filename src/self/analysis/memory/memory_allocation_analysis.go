@@ -1,4 +1,4 @@
-package memoryanalysis
+package memory
 
 type User struct {
 	ID   int

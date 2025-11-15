@@ -1,4 +1,4 @@
-package utilsuse
+package gorm
 
 import (
 	"fmt"
